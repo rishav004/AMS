@@ -7,29 +7,17 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class BankAccount {
-
-	private final static long ACCOUNT_NUMBER_START = 5_00_00_00_000L;
+public class AccountInfo {
 
 	@Id
 	@GenericGenerator(name = "kaugen", strategy = "increment")
 	@GeneratedValue(generator = "kaugen")
 	private int id;
-	private long cid;
 	private long accno;
+	private String tdate;
+	private String remarks;
+	private long refno;
 	private long balance;
-
-	public BankAccount() {
-
-	}
-
-	public BankAccount(int id, long cid, long accno) {
-		super();
-		this.id = id;
-		this.cid = cid;
-		this.accno = accno;
-		this.balance = 0;
-	}
 
 	public int getId() {
 		return id;
@@ -39,21 +27,36 @@ public class BankAccount {
 		this.id = id;
 	}
 
-	public long getCid() {
-		return cid;
+	public String getTdate() {
+		return tdate;
 	}
 
-	public void setCid(long cid) {
-		setAccno();
-		this.cid = cid;
+	public void setTdate(String tdate) {
+		this.tdate = tdate;
 	}
 
 	public long getAccno() {
 		return accno;
 	}
 
-	public void setAccno() {
-		this.accno = (long) Math.floor(Math.random() * 1_00_00_000L) + ACCOUNT_NUMBER_START;
+	public void setAccno(long accno) {
+		this.accno = accno;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public long getRefno() {
+		return refno;
+	}
+
+	public void setRefno(long refno) {
+		this.refno = refno;
 	}
 
 	public long getBalance() {
@@ -62,11 +65,6 @@ public class BankAccount {
 
 	public void setBalance(long balance) {
 		this.balance = balance;
-	}
-
-	@Override
-	public String toString() {
-		return "BankAccount [cid=" + cid + ", accno=" + accno + "]";
 	}
 
 }
