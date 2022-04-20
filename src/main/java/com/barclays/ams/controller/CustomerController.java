@@ -2,8 +2,6 @@ package com.barclays.ams.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +19,7 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@PostMapping("/customer")
-	public ResponseStructure<Customer> addCustomer(@RequestBody @Valid Customer customer) {
+	public ResponseStructure<Customer> addCustomer(@RequestBody Customer customer) {
 		return customerService.addCustomer(customer);
 	}
 

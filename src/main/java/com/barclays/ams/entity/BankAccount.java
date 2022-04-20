@@ -3,10 +3,12 @@ package com.barclays.ams.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "bank_account")
 public class BankAccount {
 
 	private final static long ACCOUNT_NUMBER_START = 5_00_00_00_000L;
@@ -17,7 +19,7 @@ public class BankAccount {
 	private int id;
 	private long cid;
 	private long accno;
-	private long balance;
+	private float balance;
 
 	public BankAccount() {
 
@@ -56,12 +58,12 @@ public class BankAccount {
 		this.accno = (long) Math.floor(Math.random() * 1_00_00_000L) + ACCOUNT_NUMBER_START;
 	}
 
-	public long getBalance() {
+	public float getBalance() {
 		return balance;
 	}
 
-	public void setBalance(long balance) {
-		this.balance = balance;
+	public void setBalance(float bal) {
+		this.balance = bal;
 	}
 
 	@Override

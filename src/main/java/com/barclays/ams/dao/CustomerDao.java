@@ -35,11 +35,16 @@ public class CustomerDao {
 		Customer cust1 = customerRepository.save(customer);
 		bankAccount.setCid(cust1.getCid());
 		bankAccountRepository.save(bankAccount);
+		// send email
 		return cust1;
 	}
 
 	public List<Customer> getAll() {
 		return customerRepository.findAll();
+	}
+
+	public Customer getByCid(long cid) {
+		return customerRepository.findByCid(cid);
 	}
 
 }
